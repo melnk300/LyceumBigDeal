@@ -15,12 +15,12 @@ class Example(QWidget):
         self.initUI()
 
     def getImage(self):
-        delta = "0.002"
-        ll = "37.530887,55.703118"
+        delta = 0.002
+        ll = 37.530887, 55.703118
         geocoder_api_server = "http://static-maps.yandex.ru/1.x/"
         geocoder_params = {
-            "ll": ll,
-            "spn": ",".join([delta, delta]),
+            "ll": ",".join([str(ll[0]), str(ll[1])]),
+            "spn": ",".join([str(delta), str(delta)]),
             "l": "map",
         }
 

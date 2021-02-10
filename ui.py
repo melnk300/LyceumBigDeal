@@ -2,6 +2,7 @@ import os
 import sys
 
 import requests
+import api
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 
@@ -15,21 +16,9 @@ class Example(QWidget):
         self.initUI()
 
     def getImage(self):
-        delta = 0.002
-        ll = 37.530887, 55.703118
-        geocoder_api_server = "http://static-maps.yandex.ru/1.x/"
-        geocoder_params = {
-            "ll": ",".join([str(ll[0]), str(ll[1])]),
-            "spn": ",".join([str(delta), str(delta)]),
-            "l": "map",
-        }
-
-        response = requests.get(geocoder_api_server, params=geocoder_params)
-        print(response.url)
+        api.get_img('76.564993,60.938296')
 
         self.map_file = "map.png"
-        with open(self.map_file, "wb") as file:
-            file.write(response.content)
 
     def initUI(self):
         self.setGeometry(100, 100, *SCREEN_SIZE)

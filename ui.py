@@ -31,11 +31,13 @@ class Example(QWidget):
 
     def keyPressEvent(self, e):
         if e.key() == QtCore.Qt.Key_PageUp:
-            self.z += 1
-            self.getImage()
+            if self.z <= 17:
+                self.z += 1
+                self.getImage()
         elif e.key() == QtCore.Qt.Key_PageDown:
-            self.z -= 1
-            self.getImage()
+            if self.z >= 3:
+                self.z -= 1
+                self.getImage()
 
 
 if __name__ == '__main__':
